@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elige tu misión – ¿Ya serviste o quieres servir?</title>
+  <meta name="description" content="Pantalla de decisión con estilo retro: elige entre 'Ya serví' o 'Quiero servir' y descubre rutas de becas o de alistamiento." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-a:#ffd9c4; /* fondo ajedrezado estilo del sitio */
+      --bg-b:#ffe7d9;
+      --accent:#ff6a2f; /* naranja principal */
+      --accent-dark:#ff4d10;
+      --blue:#1976ff; /* azul ventanas */
+      --blue-dark:#0b4bc2;
+      --ok:#2ecc71; /* verde opción 1 */
+      --ok-dark:#27ae60;
+      --go:#3498db; /* azul opción 2 */
+      --go-dark:#2980b9;
+      --text:#252525;
+      --card:#ffffff;
+      --radius:22px;
+      --shadow:0 12px 40px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif; line-height:1.5;
+      background:
+        repeating-linear-gradient(0deg, var(--bg-a) 0 24px, var(--bg-b) 24px 48px),
+        linear-gradient(#fff,#fff);
+      background-attachment: fixed;
+    }
+    .container{max-width:1100px; padding:24px; margin-inline:auto}
+
+    /* Cabecera */
+    .tag{
+      display:inline-flex; align-items:center; gap:.6rem; font-family:"Press Start 2P", system-ui, monospace; font-size:14px; letter-spacing:.5px; color:#fff; background:var(--accent); padding:12px 16px; border-radius:10px; box-shadow:0 4px 0 var(--accent-dark);
+    }
+    .tag .medal{display:inline-block; width:18px; height:18px; border:3px solid #fff; border-radius:4px; position:relative}
+    .tag .medal:after{content:""; position:absolute; inset:3px; background:#fff}
+    .title{
+      font-family:"Press Start 2P", system-ui, monospace; font-size:clamp(28px, 4vw, 48px); color:#fff; line-height:1.25; margin:14px 0 22px; display:inline-block; padding:18px 22px; background:var(--accent); border-radius:16px; box-shadow:0 8px 0 var(--accent-dark);
+    }
+
+    /* Ventana / panel */
+    .window{position:relative; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px 22px 26px; border:3px solid var(--blue);}
+    .window::after{content:""; position:absolute; inset:10px -10px -10px 10px; border-radius:var(--radius); border-right:6px solid var(--accent); border-bottom:6px solid var(--accent); pointer-events:none}
+    .window .bar{position:absolute; top:-14px; right:14px; display:flex; gap:6px}
+    .dot{width:10px; height:10px; border-radius:3px; background:var(--blue-dark)}
+
+    h1,h2,h3{margin:0 0 10px}
+    h1,h2{color:var(--accent)}
+    p{margin:0; max-width:75ch}
+
+    .center{text-align:center}
+
+    /* Opciones estilo botones grandes */
+    .choices{display:grid; gap:22px; margin-top:26px}
+    .choice{
+      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:10px;
+      padding:24px 20px; border-radius:18px; text-decoration:none; color:#fff; font-family:"Press Start 2P", system-ui, monospace; font-size:clamp(14px,1.8vw,18px);
+      box-shadow:0 8px 0 rgba(0,0,0,.15); border:3px solid rgba(255,255,255,.6); transition: transform .08s ease, box-shadow .08s ease, filter .08s ease;
+    }
+    .choice small{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:14px; opacity:.95}
+    .choice.ok{background:var(--ok); box-shadow:0 8px 0 var(--ok-dark)}
+    .choice.go{background:var(--go); box-shadow:0 8px 0 var(--go-dark)}
+    .choice:focus{outline:4px solid #fff; outline-offset:4px}
+    .choice:hover{transform:translateY(-2px); filter:saturate(1.05)}
+    .choice:active{transform:translateY(2px); box-shadow:0 4px 0 rgba(0,0,0,.2)}
+
+    /* Layout responsivo */
+    @media (min-width:780px){
+      .choices{grid-template-columns:1fr 1fr}
+    }
+
+    /* Footer simple */
+    footer{opacity:.75; font-size:14px; margin-top:30px}
+  </style>
+</head>
+<body>
+  <header class="container" aria-labelledby="top">
+    <span class="tag" aria-hidden="true"><span class="medal"></span> Selección</span>
+    <h1 id="top" class="title">Elige tu misión</h1>
+  </header>
+
+  <main class="container">
+    <section class="window" aria-labelledby="decision">
+      <div class="bar" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <h2 id="decision" class="center">¿Ya serviste o quieres servir?</h2>
+      <p class="center">Elige tu ruta y accede a información clara sobre becas o sobre cómo alistarte.</p>
+
+      <div class="choices" role="list">
+        <a class="choice ok" role="listitem" href="beca.html" aria-label="Ya serví mi patria. Ver becas y beneficios">
+          ✅ Ya serví mi patria
+          <small>Conoce cómo postular a la Beca 18 – Fuerzas Armadas y otros beneficios.</small>
+        </a>
+        <a class="choice go" role="listitem" href="form.html" aria-label="Quiero servir. Ver cómo alistarme">
+          🫡 Quiero servir
+          <small>Llena un formulario para informarte sobre el Servicio Militar Voluntario: requisitos, pasos y ventajas.</small>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© 2025 – Sitio informativo. Estilo retro inspirado en la campaña de becas. Enlaces de ejemplo: actualiza <code>beca.html</code> y <code>servicio.html</code> según tu estructura.</p>
+  </footer>
+    <h1>¡Hola! Estás en chose.html 🎉</h1>
+  <a href="Index.html">⬅️ Volver a inicio</a>
+</body>
+</html>
